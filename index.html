@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CloudSQL Tutorial</title>
+</head>
+<body>
+<h2>Test Select</h2>
+<form action="sign" method="POST">
+    This is a test select from a local MySQL Db
+</form>
+<hr>
+{% for row in rows %}
+<p>{{ row[0]|e }} | {{ row[1]|e }}
+</p>
+<hr>
+{% endfor %}

@@ -1,0 +1,23 @@
+CREATE TEMPORARY TABLE insert_table (orderitem_id INT ,fk_supplier_company int ,fk_csp_company int ,fk_csp_contact int ,fk_owner_company int ,fk_company_airline int ,csp_po_number varchar(45) ,supplier_invoice_number varchar(45) ,title varchar(255) ,comments varchar(500) ,start_date datetime ,end_date datetime ,unit_price decimal(10,0) ,units int ,delivery_format varchar(45) ,total_price decimal(10,0) ,delivery_date datetime )
+INSERT INTO insert_table ( orderitem_id ,fk_supplier_company ,fk_csp_company ,fk_csp_contact ,fk_owner_company ,fk_company_airline ,csp_po_number ,supplier_invoice_number ,title ,comments ,start_date ,end_date ,unit_price ,units ,delivery_format ,total_price ,delivery_date )  VALUES ( %s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s )
+***INSERT SQL***
+UPDATE lms_orders.OrderItem ut
+  INNER JOIN insert_table it ON it.orderitem_id = ut.orderitem_id
+    SET ut.orderitem_id = it.orderitem_id ,
+        ut.fk_supplier_company = it.fk_supplier_company ,
+        ut.fk_csp_company = it.fk_csp_company ,
+        ut.fk_csp_contact = it.fk_csp_contact ,
+        ut.fk_owner_company = it.fk_owner_company ,
+        ut.fk_company_airline = it.fk_company_airline ,
+        ut.csp_po_number = it.csp_po_number ,
+        ut.supplier_invoice_number = it.supplier_invoice_number ,
+        ut.title = it.title ,
+        ut.comments = it.comments ,
+        ut.start_date = it.start_date ,
+        ut.end_date = it.end_date ,
+        ut.unit_price = it.unit_price ,
+        ut.units = it.units ,
+        ut.delivery_format = it.delivery_format ,
+        ut.total_price = it.total_price ,
+        ut.delivery_date = it.delivery_date
+
